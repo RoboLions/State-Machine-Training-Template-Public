@@ -61,12 +61,17 @@ public TankDrive(){
     rightBackMotor.configPeakOutputForward(1,10);
     rightBackMotor.configPeakOutputReverse(-1,10);
     rightBackMotor.configNeutralDeadband(0.001,10);
-
-
-
-
-
-
 }
 
+public void Drive(double trottle, double rotate) {
+leftBackMotor.set(trottle + rotate);
+rightBackMotor.set(trottle + rotate);
+}
+
+    public double setDeadBand(double input) {
+        if(input>0.25||input<-0.25){
+            return input;
+        }
+        return 0.0;
+    }
 }
